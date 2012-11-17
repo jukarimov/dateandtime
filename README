@@ -3,5 +3,5 @@ using php's date function, very much like you would do:
 %export TZ='Foo/Bar'
 %date
 in unix shell.
-
+MySQL is merely for input validation.
 Licence: GPL
