@@ -6,7 +6,7 @@
 
 var test_autocomp = [
 <?php
-$db = mysql_connect("localhost", "root", "root") or die ("Can't connect to mysql");
+$db = mysql_connect("*********", "****", "****") or die ("Can't connect to mysql");
 mysql_SELECT_db("mydb", $db) or die ("oops:" . mysql_error());
 
 $data = mysql_query("SELECT country_name FROM country");
