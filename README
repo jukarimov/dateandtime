@@ -1,2 +1,7 @@
-dateandtime php, html, js site wich shows time in different time zones.
-Licence: gpl
+dateandtime is php, html, js site wich shows time in different time zones,
+using php's date function, very much like you would do:
+%export TZ='Foo/Bar'
+%date
+in unix shell.
+
+Licence: GPL
