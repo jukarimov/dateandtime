@@ -6,7 +6,7 @@
 
 var test_autocomp = [
 <?php
-$db = mysql_connect("*********", "****", "****") or die ("Can't connect to mysql");
+$db = mysql_connect("localhost", "root", "root") or die ("Can't connect to mysql");
 mysql_SELECT_db("mydb", $db) or die ("oops:" . mysql_error());
 
 $data = mysql_query("SELECT country_name FROM country");
@@ -40,32 +40,6 @@ function litup() {
 		rows[i].style.backgroundColor = i % 2 ? '#ccc' : '#fff';
 	}
 }
-
-function show_updated_time() {
-	var d = document.createElement('div');
-	var t = (new Date());
-	d.innerHTML = 'Your computer time: ' + t;
-	d.style.position = 'absolute';
-	d.style.top = '110px';
-	d.style.left = '110px';
-	document.body.appendChild(d);
-}
-
-function show_time_now() {
-	var d = document.createElement('div');
-	d.innerHTML = 'Now: ' + Date();
-	d.style.position = 'absolute';
-	d.style.top = '130px';
-	d.style.left = '205px';
-	d.id = "timer";
-	document.body.appendChild(d);
-}
-
-function show_time_now_update() {
-	var t = getbyId('timer');
-	t.innerHTML = 'Now: ' + Date();
-}
-setInterval('show_time_now_update()', 1000);
 
 function show_comp(data) {
 	autocomp = getbyId('autocomp');
@@ -182,7 +156,7 @@ function search_check() {
 <style>
 
 body {
-	background-color: #666;
+	background-color: #888;
 }
 
 table {
@@ -202,27 +176,27 @@ td {
 }
 
 #search {
-	position: absolute;
-	left: 720px;
-	top: 30px;
-	color: #888;
-	border: 1px solid rgba(0,0,0,0.3);
-	-webkit-background-clip: border;
-	-webkit-background-clip: padding-box;
-	-webkit-background-clip: content-box;
+	position: relative;
+	left: 220px;
+	top: 25px;
+	color: #000;
+	border: 3px solid rgba(0,0,0,0.3);
 	border-radius: 18px;
-	height: 20px;
-	font-size: 12pt;
+	font-size: 10pt;
+	padding: 8px;
+	width: 200px;
+	background: transparent;
 }
 
 #search:focus {
 	color: #000;
+	outline: none;
 }
 
 #autocomp {
 	position: absolute;
-	left: 720px;
-	top: 55px;
+	left: 235px;
+	top: 90px;
 	width: 200px;
 	background-color: #ddd;
 	border-radius: 5px;
@@ -235,8 +209,8 @@ td {
 
 </style>
 </head>
-<body onload="litup();show_updated_time();show_time_now();">
-<input type="text" id="search" value="search..." onfocus="search_init()" onblur="search_check()"/>
+<body onload="litup();">
+Type country, city name or region<br><input type="text" id="search" value="search..." onfocus="search_init()" onblur="search_check()"/>
 <div id="autocomp"></div>
 <?php
 
@@ -252,7 +226,6 @@ if ($req[5] == '/' && $len > 6)
 		$req_zone .= $req[$i];
 	}
 }
-echo "<a href='../time'>home</a>";
 echo "<h1>Date and Time: $req_zone</h1>";
 echo "<table>";
 echo '<tr><td>Time on server</td><td>' . date("Y-m-d H:i:s") . '</td></tr>';
